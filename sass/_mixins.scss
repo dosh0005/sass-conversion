@@ -1,0 +1,30 @@
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model;
+    -moz-box-sizing: $box-model;
+    box-sizing: $box-model;
+}
+
+@mixin background($background_color, $color) {
+    background-color: $background_color;
+    color: $color;
+}
+
+@mixin fontsize_padding($font-size, $padding) {
+    font-size: $font-size;
+    padding: $padding;
+}
+
+@mixin width_margin($width, $margin) {
+    width: $width;
+    margin: $margin;
+}
+
+@mixin col-x {
+    @for $i from 1 through 4 {
+        $width: percentage(1 / $i);
+        .col-#{$i} {
+            width: $width;
+        }
+    }
+}
+
