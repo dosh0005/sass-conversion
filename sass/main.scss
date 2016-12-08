@@ -1,172 +1,145 @@
 // main SASS file
-
 @import '_mixins';
 @import '_variables';
-//@import '_queries'; ----- INCLUDED AT BOTTOM
-
-
-*{
-    padding:0;
+//Quwery in last
+//@import '_queries';
+//general
+* {
+    padding: 0;
     margin: 0;
     @include box-sizing(border-box);
 }
-*:after, 
-*:before{
+
+*:after,
+*:before {
     @include box-sizing(inherit);
 }
-html{
+
+//html
+html {
     font-size: $body_font_size;
     font-family: $body_font_family;
     line-height: 1.6;
 }
-h1, h2, h3, h4{
-    font-family: $heading_font_family; /* serif for the headings */
-}
-ul{
-    list-style: none;
-}
 
-/***********************************************
-                SPECIAL
-***********************************************/
-
-.clearfix{
-    &:after{
+//clearfix
+.clearfix {
+    &:after {
         display: table;
         clear: both;
         content: "";
     }
 }
 
+//header text
+h1,
+h2,
+h3,
+h4 {
+    font-family: $heading_font_family;
+    /* serif for the headings */
+}
 
-/***********************************************
-                LAYOUT
-***********************************************/
-.bg-header{
-    @include background($light_blue,$dark_grey);
-    border-bottom:1rem solid $med_blue;
-    border-top:1rem solid $dark_blue;
+//default width
+.defaultWidth_center {
+    width: 400px;
+    /* default */
+    margin: 0 auto;
+}
+
+//backgrounds
+.bg-header {
+    @include background($light_bl_color, $dark_gr_color);
+    border-top: 1rem solid $dark_bl_color;
+    border-bottom: 1rem solid $med_bl_color;
     position: relative;
-    &:after,&:before{
-        content:"";
-        position:absolute;
-        bottom:-1rem;
-        width:30%;
-        height:1rem;
-        background-color: $dark_blue;
+    &:before,
+    &:after {
+        width: 30%;
+        height: 1rem;
+        background-color: $dark_bl_color;
+        content: "";
+        position: absolute;
+        bottom: -1rem;
     }
-    &:before{
+    &:before {
         left: 0;
     }
-    &:after{
+    &:after {
         right: 0;
     }
 }
-.bg-focal{
-    @include background($light_brown,$dark_brown);
+
+.bg-content1 {
+    @include background($wh_color, $dark_gr_color);
 }
-.bg-content1{
-    @include background($white,$dark_grey);
+
+.bg-content2 {
+    @include background($light_bl_color, $dark_bl_color);
 }
-.bg-content2{
-    @include background($light_blue,$dark_blue);
+
+.bg-focal {
+    @include background($light_br_color, $dark_br_color);
 }
-.bg-footer{
-    @include background($white,$light_grey);
+
+.bg-footer {
+    @include background($wh_color, $light_gr_color);
 }
-.defaultWidth_center{
-    width: 400px; /* default */
-    margin: 0 auto;
-}
-header{
+
+//header
+header {
     @extend .defaultWidth_center;
     position: relative;
-    h1{
-        width: 100%;
+    h1 {
         padding: 0 2rem;
-    }
-    nav{
         width: 100%;
     }
-    ul li{
+    nav {
         width: 100%;
+    }
+    ul li {
         float: none;
+        width: 100%;
     }
 }
 
-section{
-    &.focal{
-        @extend .defaultWidth_center;
-    }
-    &.content1,&.content2{
+// Header Nav 
+header {
+    nav {
         padding: 2rem 0;
-    }
-}
-
-.row{
-    clear: both;
-}
-[class*="col-"] {
-	float: left;
-}
-@include col-x;
-
-.col-2{;
-    padding-bottom: 2rem;
-    border-left:1px solid $dark_blue;
-    margin-bottom: 2rem;
-}
-
-footer{
-    padding:2rem 0;
-    .col-2:first-child{
-        border-left: 0;
-    }
-}
-
-/***********************************************
-                NAVIGATION
-***********************************************/
-
-header{
-    nav{
-        padding:2rem 0;
         clear: both;
-        ul > li > a{
-            display:block;
+        ul > li > a {
+            display: block;
             text-align: center;
             text-decoration: none;
-            @include background($white,$dark_grey); 
-            @include fontsize_padding($regular_font_size,1.0rem 2rem);
+            @include background($wh_color, $dark_gr_color);
+            @include fontsize_padding($regular_font_size, 1.0rem 2rem);
             letter-spacing: 0.25rem;
-            border: 1px solid $light_grey; 
+            border: 1px solid $light_gr_color;
             border-bottom: none;
             line-height: 1;
-            &:hover{
+            &:hover {
                 font-weight: 700;
-                color:$dark_brown;
+                color: $dark_br_color;
             }
         }
     }
 }
 
-
-/***********************************************
-                CONTENT
-***********************************************/
-header{
-    h1{
-        color: $dark_brown;
+//Header Content
+header {
+    h1 {
+        color: $dark_br_color;
         letter-spacing: 0.1rem;
     }
-    i.fa-lg{
+    i.fa-lg {
         display: block;
         width: 25%;
-        float: left; 
+        float: left;
         font-size: $large_font_size;
         line-height: 12.7936rem;
-        color: $light_brown; 
-        ~span{
+        color: $light_br_color;
+        ~span {
             float: right;
             width: 75%;
             font-size: $medium_font_size;
@@ -175,74 +148,111 @@ header{
         }
     }
 }
-.focal{
-    h2{
-        @include fontsize_padding($small_font_size,2rem 2rem 1rem 2rem);
-        line-height: 1.2;
+
+//section
+section {
+    &.focal {
+        @extend .defaultWidth_center;
     }
-    .author{
-        @include fontsize_padding($content_font_size,0.2rem 2rem 2rem);
+    &.content1,
+    &.content2 {
+        padding: 2rem 0;
     }
 }
 
-.content1{
-    h3{
-        @include fontsize_padding($small_font_size,0.2rem 2rem 2rem); 
+//list
+ul {
+    list-style: none;
+}
+
+//row
+.row {
+    clear: both;
+}
+
+//col all
+[class*="col-"] {
+    float: left;
+}
+
+@include col-x;
+.col-2 {
+    ;
+    padding-bottom: 2rem;
+    border-left: 1px solid $dark_bl_color;
+    margin-bottom: 2rem;
+}
+
+//focal
+.focal {
+    h2 {
+        @include fontsize_padding($small_font_size, 2rem 2rem 1rem 2rem);
+        line-height: 1.2;
     }
-    i{
+    .author {
+        @include fontsize_padding($content_font_size, 0.2rem 2rem 2rem);
+    }
+}
+
+//content
+.content1 {
+    h3 {
+        @include fontsize_padding($small_font_size, 0.2rem 2rem 2rem);
+    }
+    i {
         vertical-align: middle;
         padding-right: 2rem;
     }
-    p{
-        @include fontsize_padding($regular_font_size,0.5rem 2rem 2rem);
-    }
-}
-.content2{
-    h3{
-        @include fontsize_padding($small_font_size,1rem 2rem 0.5rem);
-    }
-    h4{
-        @include fontsize_padding($small_font_size,1rem 2rem 0rem);
-    }
-    p{
-        @include fontsize_padding($regular_font_size,0.5rem 2rem 1rem);
-    }
-    li{
-        @include fontsize_padding($regular_font_size,0.5rem 2rem);
+    p {
+        @include fontsize_padding($regular_font_size, 0.5rem 2rem 2rem);
     }
 }
 
-/***********************************************
-                FOOTER
-***********************************************/
+.content2 {
+    h3 {
+        @include fontsize_padding($small_font_size, 1rem 2rem 0.5rem);
+    }
+    h4 {
+        @include fontsize_padding($small_font_size, 1rem 2rem 0rem);
+    }
+    p {
+        @include fontsize_padding($regular_font_size, 0.5rem 2rem 1rem);
+    }
+    li {
+        @include fontsize_padding($regular_font_size, 0.5rem 2rem);
+    }
+}
 
-footer{
-    h4{
-        @include fontsize_padding($regular_font_size,0.5rem 2rem);
-        color: $dark_brown;
+//footer
+footer {
+    padding: 2rem 0;
+    .col-2:first-child {
+        border-left: 0;
     }
-    p{
-        @include fontsize_padding($content_font_size,0.5rem 2rem);
-        color: $dark_grey;
+}
+
+//footer
+footer {
+    h4 {
+        @include fontsize_padding($regular_font_size, 0.5rem 2rem);
+        color: $dark_br_color;
     }
-    .fa-circle{
-        color: $dark_grey;
+    p {
+        @include fontsize_padding($content_font_size, 0.5rem 2rem);
+        color: $dark_gr_color;
     }
-    footer h4[lang=de]{
-       display:block;
+    .fa-circle {
+        color: $dark_gr_color;
+    }
+    footer h4[lang=de] {
+        display: block;
     }
     footer h4[lang=en],
     footer h4[lang=ar],
-    footer h4[lang=ru]{
-        display:none;
+    footer h4[lang=ru] {
+        display: none;
     }
 }
 
-
-/***********************************************
-                MEDIA QUERIES
-***********************************************/
-
+//media query - responsivness
 @import '_queries';
-
-

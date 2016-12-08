@@ -1,6 +1,8 @@
 $width_small: 700px;
 $width_medium: 900px;
 $width_large: 1400px;
+
+//media query header
 @mixin respond_to($media) {
     @if $media==small_screen {
         @media all and (min-width: $width_small + 1) and (max-width: $width_medium) {
@@ -19,6 +21,39 @@ $width_large: 1400px;
     }
 }
 
+//ul li
+@mixin extend_ul_li {
+    width: 20%;
+    float: left;
+}
+
+//nav
+@mixin extend_nav {
+    position: static;
+    clear: both;
+    width: 100%;
+    padding: 0;
+}
+
+//section content
+@mixin section_content {
+    h4 {
+        font-size: $regular_font_size;
+    }
+    li {
+        font-size: $regular_font_size;
+    }
+}
+
+//a link
+@mixin extend_a {
+    line-height: 2rem;
+    border: none;
+    border-left: 1px solid $light_gr_color;
+    background-color: $wh_color;
+}
+
+//icon
 @mixin extend_icon {
     display: inline;
     vertical-align: baseline;
@@ -33,34 +68,7 @@ $width_large: 1400px;
     }
 }
 
-@mixin extend_nav {
-    position: static;
-    clear: both;
-    width: 100%;
-    padding: 0;
-}
-
-@mixin extend_ul_li {
-    width: 20%;
-    float: left;
-}
-
-@mixin extend_a {
-    line-height: 2rem;
-    border: none;
-    border-left: 1px solid $light_grey;
-    background-color: $white;
-}
-
-@mixin section_content {
-    h4 {
-        font-size: $regular_font_size;
-    }
-    li {
-        font-size: $regular_font_size;
-    }
-}
-
+//small screen
 @include respond_to(small_screen) {
     header {
         @include width_margin(700px, 0 auto);
@@ -68,14 +76,6 @@ $width_large: 1400px;
         &:before,
         &:after {
             width: 230px;
-        }
-        h1 {
-            width: 100%;
-            color: $dark_brown;
-            i.fa-lg {
-                @include extend_icon;
-                color: $dark_brown;
-            }
         }
         nav {
             @include extend_nav;
@@ -86,9 +86,17 @@ $width_large: 1400px;
                     @include fontsize_padding($content_font_size, 1.0rem);
                     min-height: 6rem;
                     &:last-child {
-                        border-right: 1px solid $light_grey;
+                        border-right: 1px solid $light_gr_color;
                     }
                 }
+            }
+        }
+        h1 {
+            width: 100%;
+            color: $dark_br_color;
+            i.fa-lg {
+                @include extend_icon;
+                color: $dark_br_color;
             }
         }
     }
@@ -109,7 +117,7 @@ $width_large: 1400px;
     }
     footer {
         .fa-circle {
-            color: $med_blue;
+            color: $med_bl_color;
         }
         .col-2:last-child {
             unicode-bidi: bidi-override;
@@ -126,6 +134,7 @@ $width_large: 1400px;
     }
 }
 
+//medium screen
 @include respond_to(medium_screen) {
     header {
         @include width_margin(900px, 0 auto);
@@ -133,19 +142,11 @@ $width_large: 1400px;
         &:after {
             width: 300px;
         }
-        h1 {
-            width: 100%;
-            color: $dark_blue;
-            i.fa-lg {
-                @include extend_icon;
-                color: $dark_blue;
-            }
-        }
         nav {
             @include extend_nav;
             ul li {
                 @include extend_ul_li;
-                background-color: $white;
+                background-color: $wh_color;
                 a {
                     @include extend_a;
                     @include fontsize_padding($content_font_size, 0rem 1rem);
@@ -157,6 +158,14 @@ $width_large: 1400px;
                         border-left: none;
                     }
                 }
+            }
+        }
+        h1 {
+            width: 100%;
+            color: $dark_bl_color;
+            i.fa-lg {
+                @include extend_icon;
+                color: $dark_bl_color;
             }
         }
     }
@@ -207,7 +216,7 @@ $width_large: 1400px;
     }
     footer {
         .fa-circle {
-            color: $light_brown;
+            color: $light_br_color;
         }
         h4[lang=ru] {
             display: block;
@@ -220,6 +229,7 @@ $width_large: 1400px;
     }
 }
 
+//large screen
 @include respond_to(wide_screen) {
     header {
         @include width_margin(1400px, 0 auto);
@@ -227,19 +237,11 @@ $width_large: 1400px;
         &:after {
             width: 450px;
         }
-        h1 {
-            width: 100%;
-            color: $dark_brown;
-            i.fa-lg {
-                @include extend_icon;
-                color: $dark_brown;
-            }
-        }
         nav {
             @include extend_nav;
             ul li {
                 @include extend_ul_li;
-                background-color: $white;
+                background-color: $wh_color;
                 a {
                     @include extend_a;
                     @include fontsize_padding($regular_font_size, 0 1.0rem);
@@ -251,6 +253,14 @@ $width_large: 1400px;
                         border-left: none;
                     }
                 }
+            }
+        }
+        h1 {
+            width: 100%;
+            color: $dark_br_color;
+            i.fa-lg {
+                @include extend_icon;
+                color: $dark_br_color;
             }
         }
     }
@@ -313,11 +323,11 @@ $width_large: 1400px;
             font-size: $regular_font_size;
             letter-spacing: 0.2rem;
             &:last-child {
-                color: $light_grey;
+                color: $light_gr_color;
             }
         }
         .fa-circle {
-            color: $med_blue;
+            color: $med_bl_color;
         }
         h4[lang=en] {
             display: block;

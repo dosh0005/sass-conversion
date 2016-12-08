@@ -1,29 +1,29 @@
-@mixin box-sizing($box-model) {
-    -webkit-box-sizing: $box-model;
-    -moz-box-sizing: $box-model;
-    box-sizing: $box-model;
+@mixin box-sizing($box-mod) {
+    -webkit-box-sizing: $box-mod;
+    -moz-box-sizing: $box-mod;
+    box-sizing: $box-mod;
 }
 
-@mixin background($background_color, $color) {
-    background-color: $background_color;
-    color: $color;
+@mixin background($bg_color, $c) {
+    background-color: $bg_color;
+    color: $c;
 }
 
-@mixin fontsize_padding($font-size, $padding) {
-    font-size: $font-size;
-    padding: $padding;
+@mixin fontsize_padding($fs, $p) {
+    font-size: $fs;
+    padding: $p;
 }
 
-@mixin width_margin($width, $margin) {
-    width: $width;
-    margin: $margin;
+@mixin width_margin($w, $m) {
+    width: $w;
+    margin: $m;
 }
 
 @mixin col-x {
-    @for $i from 1 through 4 {
-        $width: percentage(1 / $i);
-        .col-#{$i} {
-            width: $width;
+    @for $x from 1 through 4 {
+        $w: percentage(1 / $x);
+        .col-#{$x} {
+            width: $w;
         }
     }
 }
